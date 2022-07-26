@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      #img {
+        width: 100%;
+        border-radius: 5px;
+        object-fit: auto;
+      }
+
+      #imageBox {
+        margin: 10px;
+        padding: 10px;
+      }
+
+      #getMovieButton {
+        border-radius: 5px;
+        background: rgba(255, 140, 0, 0.5);
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      #buttonBox {
+        display: flex;
+      }
+
+      #imageBox {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        justify-content: center;
+      }
+
+      span {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="buttonBox">
+        <div style="margin:0 auto;" id="movieBox">
+          <input type="text" style="height: 30px;" id="searchText">
+          <button id="getMovieButton">영화 정보 가져오기</button>
+          <span id="movieLength" style="width: 200px"></span>
+        </div>
+      </div>
+      <div id="imageBox"></div>
+    </div>
+
+    <script>
+      let imageBox = document.querySelector('#imageBox')
+      let inputValue = document.querySelector('#searchText')
+      let getMovieButton = document.querySelector('#getMovieButton')
+      let movieBox = document.querySelector('#movieBox')
+      let movieLength = document.querySelector('#movieLength')
+
+      inputValue.addEventListener('keypress', (event) => {
+        if (event.keyCode == 13) {
+          getMovieApi(inputValue.value)
+        }
+      })
+
+      getMovieButton.addEventListener('click', () => {
+        getMovieApi(inputValue.value)
+      })
+
+      async function getMovieApi(inputValue) {
+        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=1c17a20b7447589ceae416940a866a8f&query=${inputValue}&language=ko-KR`).then(function (받은값) {
+          return 받은값.json();
+        }).then(function (결과) {
+          console.log(결과.results)
+          console.log(결과.results.length)
+          movieLength.innerText = ''
+          movieLength.innerText = 결과.results.length + '개의 영화가 있습니다.'
+          console.log(movieLength.innerText)
+
+          if (document.querySelector('#img')) imageBox.innerHTML = ''
+
+          for (let i = 0; i < 결과.results.length; i++) {
+
+            let img = document.createElement('img');
+            let title = document.createElement('span');
+            let div = document.createElement('div');
+
+            if (결과.results[i].backdrop_path == null) {
+              img.src = './noImage.png'
+              img.id = 'img'
+
+              div.style = "margin:10px"
+              imageBox.appendChild(div);
+              div.appendChild(img);
+
+              title.innerText = 결과.results[i].title;
+              div.appendChild(title);
+            } else {
+              img.src = `https://image.tmdb.org/t/p/original/${결과.results[i].backdrop_path}`
+              img.id = 'img'
+
+              div.style = "margin:10px"
+              imageBox.appendChild(div);
+              div.appendChild(img);
+
+              title.innerText = 결과.results[i].title;
+              div.appendChild(title);
+            }
+          }
+        });
+      }
+
+
+    </script>
+  </body>
+</html>
