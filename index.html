@@ -32,7 +32,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         justify-content: center;
-        margin-top: 5%;
+        margin-top: 2%;
       }
     </style>
   </head>
@@ -40,10 +40,15 @@
     <!-- <div class="container"> -->
     <nav class="navbar bg-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
+        <a class="navbar-brand"><span
+            style="color:orange; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            TMDB
+          </span>
+          영화 검색</a>
         <form class="d-flex" role="search" onsubmit="return false">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchText">
-          <button class="btn btn-outline-success" type="submit" id="getMovieButton">Search</button>
+          <input class="form-control me-2" type="search" placeholder="영화 검색" aria-label="Search" id="searchText">
+          <button class="btn btn-outline-success" type="submit" id="getMovieButton"
+            style="word-break: keep-all;">검색</button>
         </form>
       </div>
     </nav>
