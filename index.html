@@ -16,10 +16,6 @@
         cursor: pointer;
       }
 
-      #imageBox {
-        margin: 10px;
-        padding: 10px;
-      }
 
       #getMovieButton {
         border-radius: 5px;
@@ -33,10 +29,10 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         justify-content: center;
-        margin-top: 4%;
+        margin-top: 100px;
       }
 
-      span {
+      #title {
         display: inline-block;
         width: 100%;
         text-align: center;
@@ -90,6 +86,8 @@
             let div = document.createElement('div');
             let aTag = document.createElement('a');
             let title = document.createElement('span');
+
+            title.id = 'title'
 
             // TMDB movie api에서 받아온 데이터 안에 배경화면 이미지가 주소가 없는 경우는 no Image로 화면 출력
             if (결과.results[i].backdrop_path == null) {
