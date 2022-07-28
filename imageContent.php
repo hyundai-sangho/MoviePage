@@ -36,6 +36,47 @@ $MovieName = $_GET['movie_name'];
       object-fit: auto;
       cursor: pointer;
     }
+
+    .liveReply {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1800px) {
+      .liveReply {
+        width: 55%;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 1500px) {
+      .liveReply {
+        width: 65%;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .liveReply {
+        width: 75%;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .liveReply {
+        width: 85%;
+        margin: 0 auto;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+      .liveReply {
+        width: 95%;
+        margin: 0 auto;
+      }
+    }
     </style>
 
   </head>
@@ -51,7 +92,7 @@ $MovieName = $_GET['movie_name'];
     </div>
 
     <!-- 라이브리 시티 설치 코드 -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDE4Ni8zMDY1OA==" style="width: 50%; margin:0 auto;">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDE4Ni8zMDY1OA==" class="liveReply">
       <script type="text/javascript">
       // livereOptions에 refer 값을 따로 설정하지 않으면 영화 검색 페이지에서 선택한 영화가
       // 모두 같은 imageContent.php 사이트에 보여지기 때문에 
