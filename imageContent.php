@@ -56,6 +56,10 @@ $MovieName = $_GET['movie_name'];
     <!-- 라이브리 시티 설치 코드 -->
     <div id="lv-container" data-id="city" data-uid="MTAyMC81NDE4Ni8zMDY1OA==" style="width: 50%; margin:0 auto;">
       <script type="text/javascript">
+      window.livereOptions = {
+        refer: 'http://teha007.dothome.co.kr/movie/'
+      };
+
       (function(d, s) {
         var j, e = d.getElementsByTagName(s)[0];
 
