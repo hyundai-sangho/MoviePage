@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,7 @@
         width: 100%;
         border-radius: 5px;
         object-fit: auto;
+        cursor: pointer;
       }
 
       #imageBox {
@@ -32,13 +33,12 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         justify-content: center;
-        margin-top: 2%;
+        margin-top: 4%;
       }
     </style>
   </head>
   <body>
-    <!-- <div class="container"> -->
-    <nav class="navbar bg-light fixed-top">
+    <nav class="navbar bg-light fixed-top p-3">
       <div class="container-fluid">
         <a class="navbar-brand"><span
             style="color:orange; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
@@ -54,7 +54,6 @@
     </nav>
 
     <div id="imageBox"></div>
-    <!-- </div> -->
 
     <script>
       let imageBox = document.querySelector('#imageBox')
@@ -82,16 +81,19 @@
           for (let i = 0; i < 결과.results.length; i++) {
 
             let img = document.createElement('img');
-            let title = document.createElement('span');
             let div = document.createElement('div');
+            let aTag = document.createElement('a');
 
+            // TMDB movie api에서 받아온 데이터 안에 배경화면 이미지가 주소가 없는 경우는 no Image로 화면 출력
             if (결과.results[i].backdrop_path == null) {
               img.src = './noImage.png'
               img.id = 'img'
 
               div.style = "margin:10px"
+              aTag.href = `imageContent.php?movie_name=${결과.results[i].title}`
               imageBox.appendChild(div);
-              div.appendChild(img);
+              div.appendChild(aTag);
+              aTag.appendChild(img);
 
               title.innerText = 결과.results[i].title;
               div.appendChild(title);
@@ -100,8 +102,10 @@
               img.id = 'img'
 
               div.style = "margin:10px"
+              aTag.href = `imageContent.php?movie_name=${결과.results[i].title}`
               imageBox.appendChild(div);
-              div.appendChild(img);
+              div.appendChild(aTag);
+              aTag.appendChild(img);
 
               title.innerText = 결과.results[i].title;
               div.appendChild(title);
