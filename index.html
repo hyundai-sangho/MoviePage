@@ -10,7 +10,6 @@
 
     <style>
       #img {
-        width: 100%;
         border-radius: 5px;
         object-fit: auto;
         cursor: pointer;
@@ -83,6 +82,7 @@
             let img = document.createElement('img');
             let div = document.createElement('div');
             let aTag = document.createElement('a');
+            let title = document.createElement('span');
 
             // TMDB movie api에서 받아온 데이터 안에 배경화면 이미지가 주소가 없는 경우는 no Image로 화면 출력
             if (결과.results[i].backdrop_path == null) {
