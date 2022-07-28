@@ -64,11 +64,15 @@
       let movieBox = document.querySelector('#movieBox')
 
       inputValue.addEventListener('keypress', (event) => {
-        if (event.keyCode == 13) getMovieApi(inputValue.value)
+        if (event.keyCode == 13) {
+          getMovieApi(inputValue.value)
+          inputValue.value = ''
+        }
       })
 
       getMovieButton.addEventListener('click', (event) => {
         getMovieApi(inputValue.value)
+        inputValue.value = ''
       })
 
       async function getMovieApi(inputValue) {
