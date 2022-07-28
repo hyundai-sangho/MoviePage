@@ -37,20 +37,30 @@
         width: 100%;
         text-align: center;
       }
+
+      @media (max-width: 600px) {
+        #tmdbLogo {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
     <nav class="navbar bg-light fixed-top p-3">
       <div class="container-fluid">
-        <a class="navbar-brand"><span
+        <a class="navbar-brand" id="tmdbLogo"><span
             style="color:orange; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             TMDB
           </span>
           영화 검색</a>
         <form class="d-flex" role="search" onsubmit="return false">
-          <input class="form-control me-2" type="search" placeholder="영화 검색" aria-label="Search" id="searchText">
-          <button class="btn btn-outline-success" type="submit" id="getMovieButton"
+          <input class="form-control me-2" type="search" placeholder="영화" aria-label="Search" id="searchText">
+          <button class="btn btn-outline-success m-2" type="submit" id="getMovieButton"
             style="word-break: keep-all;">검색</button>
+          <button class="btn btn-outline-success m-2" type="submit" id="getMovieButton"
+            style="word-break: keep-all;">회원가입</button>
+          <button class="btn btn-outline-success m-2" type="submit" id="getMovieButton"
+            style="word-break: keep-all;">로그인</button>
         </form>
       </div>
     </nav>
