@@ -19,18 +19,24 @@ $MovieName = $_GET['movie_name'];
 
     <style>
     #imageBox {
-      position: relative;
-      display: flex;
-      flex-wrap: nowrap;
-      flex-direction: row;
-      /*수평 정렬*/
-      align-items: center;
-      justify-content: center;
-      margin-top: 3%;
-      margin-left: 3%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px 20px;
+      margin: 20px auto;
+      /* justify-content: center;
+      align-items: center; */
+      /* margin-top: 4%; */
     }
 
     i {
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+      object-fit: auto;
       cursor: pointer;
     }
     </style>
@@ -38,6 +44,7 @@ $MovieName = $_GET['movie_name'];
   </head>
 
   <body>
+
     <div style="margin:0 auto; width: 200px;">
       <a href="http://localhost:8111/"><i class="fa fa-arrow-left" aria-hidden="true"> 뒤로 가기</i></a>
     </div>
@@ -71,13 +78,13 @@ $MovieName = $_GET['movie_name'];
         let vote_average = 결과.results[0].vote_average
 
         img.src = `https://image.tmdb.org/t/p/w500/${결과.results[0].poster_path}`;
-        img.style = 'max-width: 400px'
+        // img.style = 'max-width: 400px'
 
         imageBox.appendChild(div1);
         imageBox.appendChild(div2);
         div1.appendChild(img)
 
-        div2.style = "margin: 0 20px 0 20px; width: 40%; position: relative; top: -150px;"
+        // div2.style = "margin: -300px 0 0 20px; width: 40%;"
 
         div2.innerHTML = `
         <h3><span style="color:orange">제목:</span> ${title}</h3>
