@@ -57,7 +57,7 @@ $MovieName = $_GET['movie_name'];
     <div id="lv-container" data-id="city" data-uid="MTAyMC81NDE4Ni8zMDY1OA==" style="width: 50%; margin:0 auto;">
       <script type="text/javascript">
       window.livereOptions = {
-        refer: 'http://teha007.dothome.co.kr/movie/'
+        refer: '<?php echo $_GET['movie_name'] ?>'
       };
 
       (function(d, s) {
