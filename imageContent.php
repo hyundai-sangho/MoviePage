@@ -24,9 +24,6 @@ $MovieName = $_GET['movie_name'];
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px 20px;
       margin: 20px auto;
-      /* justify-content: center;
-      align-items: center; */
-      /* margin-top: 4%; */
     }
 
     i {
@@ -46,7 +43,7 @@ $MovieName = $_GET['movie_name'];
   <body>
 
     <div style="margin:0 auto; width: 200px;">
-      <a href="http://localhost:8111/"><i class="fa fa-arrow-left" aria-hidden="true"> 뒤로 가기</i></a>
+      <a href="javascript:history.back();"><i class=" fa fa-arrow-left" aria-hidden="true"> 뒤로 가기</i></a>
     </div>
 
     <div id="imageBox">
@@ -56,6 +53,12 @@ $MovieName = $_GET['movie_name'];
     <!-- 라이브리 시티 설치 코드 -->
     <div id="lv-container" data-id="city" data-uid="MTAyMC81NDE4Ni8zMDY1OA==" style="width: 50%; margin:0 auto;">
       <script type="text/javascript">
+      // livereOptions에 refer 값을 따로 설정하지 않으면 영화 검색 페이지에서 선택한 영화가
+      // 모두 같은 imageContent.php 사이트에 보여지기 때문에 
+
+      // 라이브리 댓글을 작성하면 모든 영화 페이지에서 다른 영화 페이지에서 작성한 댓글도 같이 나오므로
+      // 꼭 페이지를 구분 지을 수 있는 refer값을 설정해야만 
+      // 해당 영화에 대한 댓글을 따로 볼 수 있다.
       window.livereOptions = {
         refer: '<?php echo $_GET['movie_name'] ?>'
       };
