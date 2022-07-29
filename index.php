@@ -58,11 +58,11 @@ include_once 'connect.php';
           영화 검색</a>
         <form class="d-flex" role="search" onsubmit="return false" style="margin-top:10px">
           <input class="form-control me-2" type="search" placeholder="영화" aria-label="Search" id="searchText">
-          <button class="btn btn-outline-success m-2" type="submit" id="getMovieButton"
+          <button class="btn btn-outline-success m-2" type="submit" id="getMovie"
             style="word-break: keep-all;">검색</button>
-          <button class="btn btn-outline-success m-2" type="submit" id="getMovieButton"
+          <button class="btn btn-outline-danger m-2" type="submit" id="register"
             style="word-break: keep-all;">회원가입</button>
-          <button class="btn btn-outline-success m-2" type="submit" id="getMovieButton"
+          <button class="btn btn-outline-primary m-2" type="submit" id="login"
             style="word-break: keep-all;">로그인</button>
         </form>
       </div>
@@ -72,8 +72,9 @@ include_once 'connect.php';
     <script>
     let imageBox = document.querySelector('#imageBox')
     let inputValue = document.querySelector('#searchText')
-    let getMovieButton = document.querySelector('#getMovieButton')
-    let movieBox = document.querySelector('#movieBox')
+    let getMovieButton = document.querySelector('#getMovie')
+    let registerButton = document.querySelector('#register')
+    let loginButton = document.querySelector('#login')
 
     inputValue.addEventListener('keypress', (event) => {
       if (event.keyCode == 13) {
@@ -118,7 +119,13 @@ include_once 'connect.php';
             div.appendChild(aTag);
             aTag.appendChild(img);
 
-            title.innerText = 결과.results[i].title;
+            if (결과.results[i].title.length > 20) {
+              title.innerText = 결과.results[i].title.substring(0, 20) + '...';
+            } else {
+              title.innerText = 결과.results[i].title;
+            }
+
+            // title.innerText = 결과.results[i].title;
             div.appendChild(title);
           } else {
             img.src = `https://image.tmdb.org/t/p/original/${결과.results[i].backdrop_path}`
@@ -130,7 +137,13 @@ include_once 'connect.php';
             div.appendChild(aTag);
             aTag.appendChild(img);
 
-            title.innerText = 결과.results[i].title;
+            // 영화 제목이 20자를 넘어가면 잘라서 출력
+            if (결과.results[i].title.length > 20) {
+              title.innerText = 결과.results[i].title.substring(0, 20) + '...';
+            } else {
+              title.innerText = 결과.results[i].title;
+            }
+            // title.innerText = 결과.results[i].title;
             div.appendChild(title);
           }
         }
