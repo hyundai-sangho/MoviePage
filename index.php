@@ -22,13 +22,6 @@ include_once 'connect.php';
       margin-bottom: 2px;
     }
 
-    #getMovieButton {
-      border-radius: 5px;
-      background: rgba(255, 140, 0, 0.5);
-      border: none;
-      cursor: pointer;
-    }
-
     #imageBox {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -57,13 +50,10 @@ include_once 'connect.php';
           </span>
           영화 검색</a>
         <form class="d-flex" role="search" onsubmit="return false" style="margin-top:10px">
-          <input class="form-control me-2" type="search" placeholder="영화" aria-label="Search" id="searchText">
-          <button class="btn btn-outline-success m-2" type="submit" id="getMovie"
-            style="word-break: keep-all;">검색</button>
-          <button class="btn btn-outline-danger m-2" type="submit" id="register"
-            style="word-break: keep-all;">회원가입</button>
-          <button class="btn btn-outline-primary m-2" type="submit" id="login"
-            style="word-break: keep-all;">로그인</button>
+          <input class="form-control m-2" type="search" placeholder="영화" aria-label="Search" id="searchText">
+          <button class="btn btn-success m-2" type="submit" id="getMovie" style="word-break: keep-all;">검색</button>
+          <button class="btn btn-danger m-2" type="submit" id="register" style="word-break: keep-all;">회원가입</button>
+          <button class="btn btn-primary m-2" type="submit" id="login" style="word-break: keep-all;">로그인</button>
         </form>
       </div>
     </nav>
@@ -76,16 +66,22 @@ include_once 'connect.php';
     let registerButton = document.querySelector('#register')
     let loginButton = document.querySelector('#login')
 
+    loginButton.addEventListener('click', () => {
+      location.href = 'login.php'
+    })
+
     inputValue.addEventListener('keypress', (event) => {
-      if (event.keyCode == 13) {
+      if (event.keyCode == 13 && inputValue.value != '') {
         getMovieApi(inputValue.value)
         inputValue.value = ''
       }
     })
 
     getMovieButton.addEventListener('click', (event) => {
-      getMovieApi(inputValue.value)
-      inputValue.value = ''
+      if (inputValue.value != '') {
+        getMovieApi(inputValue.value)
+        inputValue.value = ''
+      }
     })
 
     async function getMovieApi(inputValue) {
