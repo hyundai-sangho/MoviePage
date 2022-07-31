@@ -1,7 +1,3 @@
-<?php
-include_once 'connect.php';
-?>
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -70,16 +66,20 @@ include_once 'connect.php';
       location.href = 'login.php'
     })
 
+    registerButton.addEventListener('click', () => {
+      location.href = 'register.php'
+    })
+
     inputValue.addEventListener('keypress', (event) => {
       if (event.keyCode == 13 && inputValue.value != '') {
-        getMovieApi(inputValue.value)
+        getMovieApi(inputValue.value.trim())
         inputValue.value = ''
       }
     })
 
     getMovieButton.addEventListener('click', (event) => {
       if (inputValue.value != '') {
-        getMovieApi(inputValue.value)
+        getMovieApi(inputValue.value.trim())
         inputValue.value = ''
       }
     })
