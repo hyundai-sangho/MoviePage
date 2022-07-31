@@ -1,8 +1,14 @@
 <?php
-$host     = 'localhost';
-$database = 'teha007';
-$user     = 'teha007';
-$password = 'whtkdgh1!';
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$host     = $_ENV['HOST'];
+$database = $_ENV['DATABASE'];
+$user     = $_ENV['USER'];
+$password = $_ENV['PASSWORD'];
 
 try {
   $PDO = new PDO("mysql:host=$host; dbname=$database; charset=utf8", $user, $password);
